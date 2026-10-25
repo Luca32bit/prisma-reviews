@@ -1,0 +1,98 @@
+:root {
+  --bg: #0d0f14;
+  --bg-card: #161a22;
+  --bg-input: #1e232d;
+  --border: #2a3140;
+  --text: #e6e8ee;
+  --text-muted: #8a93a6;
+  --accent: #7c5cff;
+  --accent-hover: #9379ff;
+  --gold: #ffc857;
+  --danger: #ff5c7c;
+  --radius: 12px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  line-height: 1.6;
+  background-image:
+    radial-gradient(circle at 20% 0%, rgba(124, 92, 255, 0.15), transparent 45%),
+    radial-gradient(circle at 90% 100%, rgba(255, 200, 87, 0.08), transparent 45%);
+  background-attachment: fixed;
+}
+
+.hero { text-align: center; padding: 60px 20px 30px; }
+.hero h1 {
+  font-size: clamp(2.4rem, 6vw, 3.8rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, #fff, var(--accent), var(--gold));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.subtitle { font-size: 1.3rem; color: var(--accent); font-weight: 600; letter-spacing: 0.3em; text-transform: uppercase; margin-top: 4px; }
+.tagline { color: var(--text-muted); margin-top: 12px; font-size: 0.95rem; }
+
+main { max-width: 1100px; margin: 0 auto; padding: 20px; display: grid; grid-template-columns: 1fr 1.2fr; gap: 28px; }
+@media (max-width: 820px) { main { grid-template-columns: 1fr; } }
+
+.form-section, .reviews-section {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+}
+
+h2 { font-size: 1.2rem; margin-bottom: 20px; font-weight: 700; }
+
+.field { margin-bottom: 18px; }
+label { display: block; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 6px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; }
+input[type="text"], textarea {
+  width: 100%; background: var(--bg-input); border: 1px solid var(--border); border-radius: 8px;
+  padding: 12px 14px; color: var(--text); font-size: 0.95rem; font-family: inherit; transition: border-color 0.2s, box-shadow 0.2s;
+}
+input[type="text"]:focus, textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(124, 92, 255, 0.2); }
+textarea { resize: vertical; min-height: 100px; }
+.counter { display: block; text-align: right; font-size: 0.75rem; color: var(--text-muted); margin-top: 4px; }
+
+.stars { display: flex; gap: 6px; font-size: 2rem; user-select: none; }
+.star { color: #2f3644; cursor: pointer; transition: color 0.15s, transform 0.15s; line-height: 1; }
+.star.active { color: var(--gold); }
+.star:hover { transform: scale(1.15); }
+.star:focus-visible { outline: 2px solid var(--accent); border-radius: 4px; }
+
+button {
+  width: 100%; padding: 13px; background: var(--accent); color: white; border: none; border-radius: 8px;
+  font-size: 1rem; font-weight: 700; cursor: pointer; transition: background 0.2s, transform 0.1s;
+}
+button:hover:not(:disabled) { background: var(--accent-hover); }
+button:active:not(:disabled) { transform: scale(0.98); }
+button:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.status { margin-top: 12px; font-size: 0.9rem; text-align: center; min-height: 1.4em; }
+.status.ok { color: #4ade80; }
+.status.err { color: var(--danger); }
+
+.reviews-header { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 10px; margin-bottom: 20px; }
+.stats { display: flex; gap: 14px; font-size: 0.85rem; color: var(--text-muted); }
+#avg-rating { color: var(--gold); font-weight: 700; }
+
+.review-list { display: flex; flex-direction: column; gap: 14px; }
+.review { background: var(--bg-input); border: 1px solid var(--border); border-radius: 10px; padding: 16px; animation: fadeIn 0.35s ease; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+.review-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; gap: 10px; }
+.review-name { font-weight: 700; font-size: 0.95rem; }
+.review-stars { color: var(--gold); letter-spacing: 2px; font-size: 0.95rem; }
+.review-date { font-size: 0.75rem; color: var(--text-muted); }
+.review-comment { font-size: 0.92rem; color: #c9cfdb; word-break: break-word; white-space: pre-wrap; }
+
+.empty { text-align: center; color: var(--text-muted); padding: 20px; font-style: italic; }
+footer { text-align: center; padding: 40px 20px; color: var(--text-muted); font-size: 0.8rem; }

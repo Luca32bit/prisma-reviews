@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prisma Board: Reviews</title>
+  <link rel="stylesheet" href="gui.css" />
+</head>
+<body>
+  <header class="hero">
+    <h1>Prisma Board</h1>
+    <p class="subtitle">Reviews</p>
+    <p class="tagline">Lascia la tua recensione. Leggi quella degli altri. Per sempre.</p>
+  </header>
+
+  <main>
+    <section class="form-section">
+      <h2>Scrivi una recensione</h2>
+      <form id="review-form">
+        <div class="field">
+          <label for="name">Nome (opzionale)</label>
+          <input type="text" id="name" name="name" placeholder="Anonimo" maxlength="40" />
+        </div>
+
+        <div class="field">
+          <label>Valutazione</label>
+          <div class="stars" id="stars" role="radiogroup" aria-label="Valutazione">
+            <span data-value="1" class="star" role="radio" aria-checked="false" tabindex="0">★</span>
+            <span data-value="2" class="star" role="radio" aria-checked="false" tabindex="0">★</span>
+            <span data-value="3" class="star" role="radio" aria-checked="false" tabindex="0">★</span>
+            <span data-value="4" class="star" role="radio" aria-checked="false" tabindex="0">★</span>
+            <span data-value="5" class="star" role="radio" aria-checked="false" tabindex="0">★</span>
+          </div>
+          <input type="hidden" id="rating" name="rating" value="5" required />
+        </div>
+
+        <div class="field">
+          <label for="comment">Recensione</label>
+          <textarea id="comment" name="comment" rows="5" placeholder="Scrivi qui la tua recensione..." required maxlength="500"></textarea>
+          <small class="counter"><span id="char-count">0</span>/500</small>
+        </div>
+
+        <button type="submit" id="submit-btn">Invia recensione</button>
+        <p id="status" class="status" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <section class="reviews-section">
+      <div class="reviews-header">
+        <h2>Tutte le recensioni</h2>
+        <div class="stats">
+          <span id="avg-rating">—</span>
+          <span id="total-reviews">0 recensioni</span>
+        </div>
+      </div>
+      <div id="review-list" class="review-list">
+        <p class="empty">Caricamento recensioni…</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Prisma Board · Reviews · Un progetto persistente</p>
+  </footer>
+
+  <script src="script.json"></script>
+</body>
+</html>
